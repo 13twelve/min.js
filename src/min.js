@@ -1,5 +1,5 @@
 $ = (function () {
-  console.warn("minjs v2.0.0 - in development - methods may not work as expected");
+  console.warn("minjs v2.0.0 - untested alpha - methods may not work as expected");
 
   // Kill exeuction for bad browsers
   if(typeof document.querySelectorAll !== undefined && !('addEventListener' in window)) {
@@ -107,8 +107,7 @@ $ = (function () {
       each(this,function(el,i){
         if (el.classList) {
           el.classList.add(className);
-        } else {
-          // TODO: check if has class first
+        } else if (!$(el).hasClass(className)) {
           el.className += ' ' + className;
         }
       });
