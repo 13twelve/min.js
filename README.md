@@ -12,9 +12,9 @@ Checks for querySelectorAll and addEventListener and returns undefined if not pr
 
 ## Filesize
 
-* 5kb uncompressed
-* 2kb minified
-* 1kb minified and gzipped
+* ~5kb uncompressed
+* ~2kb minified
+* ~1kb minified and gzipped
 
 ## Query elements
 
@@ -152,7 +152,6 @@ This tiny library silently fails when it doesn't match any elements.
 
 ## To Do
 
-* fix IE9 add class method
 * add index method, to return index of node in collection
 
 ## More info
