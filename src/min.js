@@ -2,10 +2,11 @@ $ = (function () {
   console.warn("minjs v2.0.0 - untested alpha - methods may not work as expected");
 
   // Kill exeuction for bad browsers
-  if(typeof document.querySelectorAll !== undefined && !('addEventListener' in window)) {
+  if(typeof document.querySelectorAll === undefined || !('addEventListener' in window) || !window.getComputedStyle || !Object.keys) {
     return;
   }
 
+  // minjs!
   function minjs(elements) {
     if (elements) {
       this.length = elements.length;
@@ -21,7 +22,6 @@ $ = (function () {
   var events_cache = {};
 
   function each(arr,func) {
-    //Array.prototype.forEach.call(arr, func);
     var arr_length = arr.length;
     for (var i = 0; i < arr_length; i++) {
       var value = func.call(arr[i],arr[i],i);

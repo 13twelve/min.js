@@ -10,6 +10,13 @@ Checks for querySelectorAll and addEventListener and returns undefined if not pr
 
 **WIP** Needs testing!
 
+## Browser Compatibility
+
+Uses querySelectorAll, addEventListener, getComputedStyle and Object.keys. If the browser doesn't support these it stops running. Effectively this means modern browsers (IE9+).
+
+**Individual browser tests not yet completed**
+
+
 ## Filesize
 
 * ~5kb uncompressed
