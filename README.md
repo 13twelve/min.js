@@ -110,6 +110,24 @@ $('p').each(function(el,index) {
 // 0, 1
 ```
 
+## Index
+
+Search for a given element in a collection.
+
+```js
+var node = document.getElementById("#foo"); // p#foo node
+var i = $("p").index(node); // number
+```
+
+```js
+var p_foo = $("p#foo"); // p#foo minjs obj
+var i = $("p").index(p_foo); // number
+```
+
+If a match isn't found the number returned is -1.
+
+If nothing is passed then the returned number will be that of the first child of the collection, likely 0.
+
 ## Chaining events
 
 ```js
@@ -149,10 +167,6 @@ Assumes the first item if passed a collection larger than 1.
 ## Silent failing
 
 This tiny library silently fails when it doesn't match any elements.
-
-## To Do
-
-* add index method, to return index of node in collection
 
 ## More info
 

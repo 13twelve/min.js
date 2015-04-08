@@ -156,6 +156,21 @@ $ = (function () {
           return el;
         }
       }
+    },
+    index:function(item){
+      var n = -1;
+      if (item) {
+        item = (item.length > 0 || item.addClass) ? item[0] : item;
+      } else {
+        item = this[0] || this;
+      }
+      each(this,function(el,i){
+        if (el === item) {
+          n = i;
+          return false;
+        }
+      });
+      return n;
     }
   }
 
