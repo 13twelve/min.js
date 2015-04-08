@@ -34,7 +34,8 @@ Creates minjs object: an array of nodes with prototype methods.
 Optionally you can supply a context in which to look:
 
 ```js
-var divs = $('div','#content'); // minjs object
+var node = document.getElementById("#content"); // #content node
+var divs = $('p',node); // minjs object
 ```
 
 You can also pass in a node, to turn it into a minjs object:
