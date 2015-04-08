@@ -91,6 +91,9 @@ $(document).trigger('foo');
 
 ## Looping
 
+
+### Looping elements
+
 ```js
 $('p').each(function(el,index) {
   console.log(el.innerHTML);
@@ -108,6 +111,16 @@ $('p').each(function(el,index) {
   }
 });
 // 0, 1
+```
+
+### Looping any array
+
+```js
+var my_arr = ["a","b","c"];
+$.each(my_arr,function(value,index) {
+  console.log(index,value);
+});
+// 0 "a", 1 "b", 2 "c"
 ```
 
 ## Index

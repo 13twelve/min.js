@@ -184,5 +184,7 @@ $ = (function () {
     return new minjs(nodes);
   }
 
+  $.each = each;
+
   return $;
 })();
