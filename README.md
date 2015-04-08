@@ -104,7 +104,7 @@ $(document).trigger('foo');
 
 ```js
 $('p').each(function(el,index) {
-  console.log(el.innerHTML);
+  console.log(el.innerHTML); // node's inner HTML
 });
 ```
 
