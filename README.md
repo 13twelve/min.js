@@ -48,7 +48,7 @@ var container = $(node); // minjs object
 To return nodes from the minjs object:
 
 ```js
-var divs = $('div','#content');
+var divs = $('div');
 var first_div = divs[0]; // node
 ```
 
