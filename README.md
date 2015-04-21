@@ -57,10 +57,9 @@ var first_div = divs[0]; // node
 min.js isn't jQuery. Though the few methods it does have, work similar to jQuery. The intention is that using this will save you some typing on some common repeated JavaScript tasks. You can, of course, bind $ to min$:
 
 ```js
-document.addEventListener('DOMContentLoaded', function(){
-  window.$ = min$;
-});
+window.$ = min$;
 ```
+(after min$ and before the rest of your JavaScript)
 
 And then:
 
@@ -213,6 +212,7 @@ min$.prototype.tagNames = function(){
   return this;
 };
 ```
+
 Then you could use:
 
 ```js
@@ -245,6 +245,12 @@ min$.prototype.offset = function(){
 };
 ```
 
+Then you could use:
+
+```js
+min$("h1").offset(); // Object {top: 300, left: 20}
+```
+
 Alternatively you can extend minjs itself. Here is an example of a method to merge objects together:
 
 ```js
@@ -260,15 +266,17 @@ min$.merge_objects = function(obj1,obj2){
 };
 ```
 
+Then you could use:
+
 ```js
-min$.extend({foo:"bar"},{bar:"foo"});
+min$.extend({foo:"bar"},{bar:"foo"}); // Object {foo: "bar", bar: "foo"}
 ```
 
 Or aliased:
 
 ```js
 window.$ = min$;
-$.extend({foo:"bar"},{bar:"foo"});
+$.extend({foo:"bar"},{bar:"foo"}); // Object {foo: "bar", bar: "foo"}
 ```
 
 ## Silent failing
