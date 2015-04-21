@@ -152,7 +152,7 @@ min$.each(my_arr,function(value,index) {
 Search for a given element in a collection.
 
 ```js
-var node = document.getElementById("#foo"); // p#foo node
+var node = document.getElementById("foo"); // p#foo node
 var i = min$("p").index(node); // number
 ```
 
@@ -170,6 +170,8 @@ If nothing is passed then the returned number will be that of the first child of
 ```js
 min$('a').on('foo', bar).on('click', doclick).trigger('foobar');
 ```
+
+** Needs testing **
 
 ## Add, remove, has CSS class
 
