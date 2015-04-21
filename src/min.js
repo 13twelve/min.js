@@ -167,6 +167,9 @@ min$ = (function () {
       var n = -1;
       if (item) {
         item = (item.length > 0 || item.addClass) ? item[0] : item;
+        if (!document.contains(item)) {
+          return n;
+        }
       } else {
         item = this[0] || this;
       }
