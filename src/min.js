@@ -1,7 +1,5 @@
 min$ = (function () {
 
-  console.warn("min$ v2.0.1 - WIP!");
-
   // Kill exeuction for bad browsers
   if(typeof document.querySelectorAll === undefined || !('addEventListener' in window) || !window.getComputedStyle || !Object.keys) {
     return;
