@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>min.js</title>
+  <link rel="stylesheet" href="http://code.jquery.com/qunit/qunit-1.18.0.css">
+</head>
+<body>
+  <div id="qunit"></div>
+  <div id="qunit-fixture">
+
+    <ul data-attribute="test">
+      <li class="list-item">a</li>
+      <li class="list-item">b</li>
+      <li class="list-item">c</li>
+    </ul>
+
+    <p><a href="#">Link</a></p>
+
+    <span id="button">Button</span>
+
+    <ol>
+      <li id="list_item_1"><a href="#">a</a></li>
+      <li><a href="#">b</a></li>
+      <li><a href="#">c</a></li>
+    </ol>
+
+  </div>
+  <script src="http://code.jquery.com/qunit/qunit-1.18.0.js"></script>
+  <script src="http://code.jquery.com/jquery-1.11.2.min.js"></script>
+  <script>jQuery.noConflict();</script>
+  <script src="../src/min.js"></script>
+  <script src="test.js"></script>
+</body>
+</html>
