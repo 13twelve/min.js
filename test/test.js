@@ -170,3 +170,58 @@ QUnit.test("Events: off (namespaced handler)", function(assert) {
   min$("#button").trigger("mousedown");
   assert.equal(count, 4, "Events: off (namespaced handler) - passed");
 });
+
+// Index
+
+var index_test_html = '<ol><li><a href="#">a</a></li><li><a href="#">b</a></li><li id="index_test"><a href="#">c</a></li></ol>';
+
+QUnit.test("Index: passing a node", function(assert) {
+  document.getElementById("target").innerHTML = index_test_html;
+  var node = document.getElementById("index_test");
+  var pos = min$("#target ol > li").index(node);
+  document.getElementById("target").innerHTML = "";
+  assert.equal(pos, 2, "Index: passing a node - passed");
+});
+
+QUnit.test("Index: passing a min$ collection", function(assert) {
+  document.getElementById("target").innerHTML = index_test_html;
+  var node = min$("#index_test");
+  var pos = min$("#target ol > li").index(node);
+  document.getElementById("target").innerHTML = "";
+  assert.equal(pos, 2, "Index: passing a min$ collection - passed");
+});
+
+QUnit.test("Index: nothing passed", function(assert) {
+  document.getElementById("target").innerHTML = index_test_html;
+  var pos = min$("#target ol > li").index();
+  document.getElementById("target").innerHTML = "";
+  assert.equal(pos, 0, "Index: nothing passed - passed");
+});
+
+QUnit.test("Index: no match", function(assert) {
+  document.getElementById("target").innerHTML = index_test_html;
+  var node = min$("#fail");
+  var pos = min$("#target ol > li").index(node);
+  document.getElementById("target").innerHTML = "";
+  assert.equal(pos, -1, "Index: no match - passed");
+});
+
+// CSS class functions
+
+QUnit.test("CSS class functions: add", function(assert) {
+  min$("ul > li").addClass("testClass");
+  assert.equal(min$('ul > li.testClass').length, 3, "CSS class functions: add - passed");
+});
+
+QUnit.test("CSS class functions: remove", function(assert) {
+  min$("ul > li.removeClass").removeClass("removeClass");
+  assert.equal(min$('ul > li.removeClass').length, 0, "CSS class functions: remove - passed");
+});
+
+QUnit.test("CSS class functions: hasClass, class present", function(assert) {
+  assert.equal(min$("#list_item_1").hasClass("hasClass"), true, "CSS class functions: hasClass, class present - passed");
+});
+
+QUnit.test("CSS class functions: hasClass, class not present", function(assert) {
+  assert.equal(min$("#list_item_2").hasClass("hasClass"), false, "CSS class functions: hasClass, class present - passed");
+});

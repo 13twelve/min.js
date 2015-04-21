@@ -10,9 +10,9 @@
   <div id="qunit-fixture">
 
     <ul data-attribute="test">
-      <li class="list-item">a</li>
-      <li class="list-item">b</li>
-      <li class="list-item">c</li>
+      <li class="list-item removeClass">a</li>
+      <li class="list-item removeClass">b</li>
+      <li class="list-item removeClass">c</li>
     </ul>
 
     <p><a href="#">Link</a></p>
@@ -20,10 +20,12 @@
     <span id="button">Button</span>
 
     <ol>
-      <li id="list_item_1"><a href="#">a</a></li>
-      <li><a href="#">b</a></li>
-      <li><a href="#">c</a></li>
+      <li id="list_item_1" class="hasClass"><a href="#">a</a></li>
+      <li id="list_item_2"><a href="#">b</a></li>
+      <li id="list_item_3"><a href="#">c</a></li>
     </ol>
+
+    <div id="target"></div>
 
   </div>
   <script src="http://code.jquery.com/qunit/qunit-1.18.0.js"></script>
