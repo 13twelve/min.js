@@ -108,6 +108,8 @@ min$(document).on('foo', function () {
   // foo was fired
 });
 
+### Trigger events
+
 min$(document).trigger('foo');
 ```
 
