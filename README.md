@@ -1,14 +1,13 @@
 # min.js
 
-v2
+v2.0.1
 
 A super tiny JavaScript library to execute simple DOM querying, hooking name spaced event listeners, trigger events and some simple DOM node helpers. Creates objects with prototypes rather than adding prototypes to nodes themselves.
 
 This is a re-write of my [fork](https://github.com/13twelve/min_v1.js) of Remy Sharp's [min.js](https://github.com/remy/min.js).
 
-Checks for querySelectorAll and addEventListener and returns undefined if not present.
+Checks for querySelectorAll, addEventListener, window.getComputedStyle and Object.keys. Returns undefined if not present.
 
-**WIP** Needs testing!
 
 ## Browser Compatibility
 
@@ -23,10 +22,11 @@ Uses querySelectorAll, addEventListener, getComputedStyle and Object.keys. If th
 * ~2kb minified
 * ~1kb minified and gzipped
 
+
 ## Query elements
 
 ```js
-var divs = $('div'); // minjs object
+var divs = min$('div'); // minjs object
 ```
 
 Creates minjs object: an array of nodes with prototype methods.
@@ -35,23 +35,38 @@ Optionally you can supply a context in which to look:
 
 ```js
 var node = document.getElementById("#content"); // #content node
-var divs = $('p',node); // minjs object
+var divs = min$('p',node); // minjs object
 ```
 
 You can also pass in a node, to turn it into a minjs object:
 
 ```js
 var node = document.getElementById("#content"); // #content node
-var container = $(node); // minjs object
+var container = min$(node); // minjs object
 ```
 
 To return nodes from the minjs object:
 
 ```js
-var divs = $('div');
+var divs = min$('div');
 var first_div = divs[0]; // node
 ```
 
+## $ Selector
+
+min.js isn't jQuery. Though the few methods it does have, work similar to jQuery. The intention is that using this will save you some typing on some common repeated JavaScript tasks. You can, of course, bind $ to min$:
+
+```js
+document.addEventListener('DOMContentLoaded', function(){
+  window.$ = min$;
+});
+```
+
+And then:
+
+```js
+var divs = $('div'); // minjs object
+```
 
 ## Events
 
@@ -60,7 +75,7 @@ var first_div = divs[0]; // node
 Basic:
 
 ```js
-$('p:first-child a').on('click', function (event) {
+min$('p:first-child a').on('click', function (event) {
   event.preventDefault();
   // do something else
 });
@@ -68,7 +83,7 @@ $('p:first-child a').on('click', function (event) {
 
 Or with a namespace:
 ```js
-$('p:first-child a').on('click.foo', function (event) {
+min$('p:first-child a').on('click.foo', function (event) {
   event.preventDefault();
   // do something else
 });
@@ -81,20 +96,20 @@ Note:
 ### Unbind events with off()
 
 ```js
-$('p:first-child a').off(); // clears all handlers
-$('p:first-child a').off('click'); // clears just the click handlers
-$('p:first-child a').off('click.foo'); // clears just foo namespaced click handlers
-$('p:first-child a').off('.foo'); // clears foo namespaced handlers
+min$('p:first-child a').off(); // clears all handlers
+min$('p:first-child a').off('click'); // clears just the click handlers
+min$('p:first-child a').off('click.foo'); // clears just foo namespaced click handlers
+min$('p:first-child a').off('.foo'); // clears foo namespaced handlers
 ```
 
 ### Custom events
 
 ```js
-$(document).on('foo', function () {
+min$(document).on('foo', function () {
   // foo was fired
 });
 
-$(document).trigger('foo');
+min$(document).trigger('foo');
 ```
 
 ## Looping
@@ -103,7 +118,7 @@ $(document).trigger('foo');
 ### Looping elements
 
 ```js
-$('p').each(function(el,index) {
+min$('p').each(function(el,index) {
   console.log(el.innerHTML); // node's inner HTML
 });
 ```
@@ -112,7 +127,7 @@ To break a loop, return false:
 
 ```js
 // assume you have 5 p's
-$('p').each(function(el,index) {
+min$('p').each(function(el,index) {
   console.log(i);
   if (i === 1) {
     return false;
@@ -125,7 +140,7 @@ $('p').each(function(el,index) {
 
 ```js
 var my_arr = ["a","b","c"];
-$.each(my_arr,function(value,index) {
+min$.each(my_arr,function(value,index) {
   console.log(index,value);
 });
 // 0 "a", 1 "b", 2 "c"
@@ -137,12 +152,12 @@ Search for a given element in a collection.
 
 ```js
 var node = document.getElementById("#foo"); // p#foo node
-var i = $("p").index(node); // number
+var i = min$("p").index(node); // number
 ```
 
 ```js
-var p_foo = $("p#foo"); // p#foo minjs obj
-var i = $("p").index(p_foo); // number
+var p_foo = min$("p#foo"); // p#foo minjs obj
+var i = min$("p").index(p_foo); // number
 ```
 
 If a match isn't found the number returned is -1.
@@ -152,22 +167,22 @@ If nothing is passed then the returned number will be that of the first child of
 ## Chaining events
 
 ```js
-$('a').on('foo', bar).on('click', doclick).trigger('foobar');
+min$('a').on('foo', bar).on('click', doclick).trigger('foobar');
 ```
 
 ## Add, remove, has CSS class
 
 ```js
-$('a').addClass("foo"); // adds class to all links
-$('a').removeClass("bar"); // removes class from all links
-var is_foo = $('a').hasClass("foo"); // assumes the first item, returns true/false
+min$('a').addClass("foo"); // adds class to all links
+min$('a').removeClass("bar"); // removes class from all links
+var is_foo = min$('a').hasClass("foo"); // assumes the first item, returns true/false
 ```
 
 ## Read/write attributes
 
 ```js
-$('div:last-child').attr('data-url'); // returns contents of attribute
-$('div:first-child').attr('data-url','http://www.github.com/13twelve'); // sets attribute
+min$('div:last-child').attr('data-url'); // returns contents of attribute
+min$('div:first-child').attr('data-url','http://www.github.com/13twelve'); // sets attribute
 ```
 
 Assumes the first item if passed a collection larger than 1.
@@ -175,15 +190,86 @@ Assumes the first item if passed a collection larger than 1.
 ## Read/write CSS styles
 
 ```js
-$('a:last-child').css('color'); // returns computed value of color
-$('a:first-child').css('color','#000000'); // sets style
-$('a:first-child').css({
+min$('a:last-child').css('color'); // returns computed value of color
+min$('a:first-child').css('color','#000000'); // sets style
+min$('a:first-child').css({
   color: '#000000',
   paddingRight: '10px'
 }); // sets multiple styles
 ```
 
 Assumes the first item if passed a collection larger than 1.
+
+## Extending
+
+You can extend min$ by adding to its prototype:
+
+```js
+min$.prototype.tagNames = function(){
+  min$.each(this,function(el){
+   console.log(el.tagName);
+  });
+  // allow for chaining
+  return this;
+};
+```
+Then you could use:
+
+```js
+min$("*").tagNames(); // HTML, HEAD, META, TITLE, LINK..
+```
+
+Or aliased:
+
+```js
+window.$ = min$;
+$.tagNames(); // HTML, HEAD, META, TITLE, LINK..
+```
+
+'this' inside your function, is the minjs object, which is an array like object with the minjs methods on its prototype. To loop a collection, use the internal minjs each method.Returning 'this' at the end allows for chaining.
+
+This example returns the offset of an element. If your collection has more than one element, it only returns the offset for the first.
+
+```js
+min$.prototype.offset = function(){
+  var node = (this.length > 0) ? this[0] : this;
+  if (document.contains(node)) {
+    var rect = node.getBoundingClientRect()
+    return {
+      top: rect.top + document.body.scrollTop,
+      left: rect.left + document.body.scrollLeft
+    };
+  } else {
+    return null;
+  }
+};
+```
+
+Alternatively you can extend minjs itself. Here is an example of a method to merge objects together:
+
+```js
+min$.merge_objects = function(obj1,obj2){
+  var merged = {};
+  for (var def in obj1) {
+    merged[def] = obj1[def];
+  }
+  for (var def in obj2) {
+    merged[def] = obj2[def];
+  }
+  return merged;
+};
+```
+
+```js
+min$.extend({foo:"bar"},{bar:"foo"});
+```
+
+Or aliased:
+
+```js
+window.$ = min$;
+$.extend({foo:"bar"},{bar:"foo"});
+```
 
 ## Silent failing
 

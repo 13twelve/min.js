@@ -1,13 +1,14 @@
-$ = (function () {
-  console.warn("minjs v2.0.0 - untested alpha - methods may not work as expected");
+min$ = (function () {
+
+  console.warn("min$ v2.0.1 - WIP!");
 
   // Kill exeuction for bad browsers
   if(typeof document.querySelectorAll === undefined || !('addEventListener' in window) || !window.getComputedStyle || !Object.keys) {
     return;
   }
 
-  // minjs!
-  function minjs(elements) {
+  // make $ collection objects
+  function $(elements) {
     if (elements) {
       this.length = elements.length;
       for (var i = 0; i < this.length; i++) {
@@ -21,7 +22,8 @@ $ = (function () {
   // a store for events - used for namespacing event handlers
   var events_cache = {};
 
-  function each(arr,func) {
+  // a breakable each function
+  var each = function(arr,func) {
     var arr_length = arr.length;
     for (var i = 0; i < arr_length; i++) {
       var value = func.call(arr[i],arr[i],i);
@@ -30,14 +32,15 @@ $ = (function () {
       }
     }
     return arr;
-  }
+  };
 
-  minjs.prototype = {
+  // the main methods of minjs
+  $.prototype = {
     each:function(func){
       return each(this,func);
     },
-    on:function(type,fn) {
-      each(this,function(el,i){
+    on:function(type,fn){
+      each(this,function(el){
         event_uuid++;
         if (!el.handlers) {
           el.handlers = {};
@@ -57,8 +60,8 @@ $ = (function () {
       // allow for chaining
       return this;
     },
-    off:function(nodelist,type) {
-      each(this,function(el,i){
+    off:function(type){
+      each(this,function(el){
         // check for namespace
         var node = el;
         var node_handlers = node.handlers || [];
@@ -70,7 +73,7 @@ $ = (function () {
           event_namespace = type_arr[1] || "";
         }
         // loop handlers
-        Object.keys(node_handlers).forEach(function(key,i){
+        Object.keys(node_handlers).forEach(function(key){
           if (
             (type_arr.length === 0) || // off(); so remove all events from node
             (event_type === events_cache[key].type && event_namespace === events_cache[key].namespace) || // match type and namespace
@@ -88,7 +91,7 @@ $ = (function () {
       // allow for chaining
       return this;
     },
-    trigger:function(type, data) {
+    trigger:function(type,data){
       // construct an HTML event. This could have
       // been a real custom event
       var event = document.createEvent('HTMLEvents');
@@ -96,7 +99,7 @@ $ = (function () {
       event.data = data || {};
       event.eventName = type;
       //
-      each(this,function(el,i){
+      each(this,function(el){
         event.target = el;
         el.dispatchEvent(event);
       });
@@ -104,7 +107,7 @@ $ = (function () {
       return this;
     },
     addClass:function(className){
-      each(this,function(el,i){
+      each(this,function(el){
         if (el.classList) {
           el.classList.add(className);
         } else if (!$(el).hasClass(className)) {
@@ -114,7 +117,7 @@ $ = (function () {
       return this;
     },
     removeClass:function(className){
-      each(this,function(el,i){
+      each(this,function(el){
         if (el.classList) {
           el.classList.remove(className);
         } else {
@@ -125,6 +128,7 @@ $ = (function () {
     },
     hasClass:function(className){
       var el = (this.length > 0) ? this[0] : this;
+      if (!document.contains(el)) { return this; }
       if (el.classList) {
         return el.classList.contains(className);
       } else {
@@ -134,6 +138,7 @@ $ = (function () {
     },
     attr:function(){
       var el = (this.length > 0) ? this[0] : this;
+      if (!document.contains(el)) { return this; }
       if (v === undefined) {
         return el.getAttribute(a);
       } else {
@@ -141,11 +146,14 @@ $ = (function () {
         return el;
       }
     },
-    css:function(p,v) {
+    css:function(p,v){
       var el = (this.length > 0) ? this[0] : this;
+      if (!document.contains(el)) { return this; }
       if (typeof p === "object") {
         for (var n in p) {
-          el.style[n] = p[n];
+          if (p.hasOwnProperty(n)) {
+            el.style[n] = p[n];
+          }
         }
         return el;
       } else {
@@ -172,19 +180,21 @@ $ = (function () {
       });
       return n;
     }
-  }
+  };
 
-  function $(selector,context){
+  function min$(selector,context){
     var nodes = [];
     if (selector && typeof selector !== "string") {
       nodes = (selector.addClass) ? selector : [selector];
     } else if (selector) {
       nodes = (context || document).querySelectorAll(selector || '☺');
     }
-    return new minjs(nodes);
+    return new $(nodes);
   }
 
-  $.each = each;
+  min$.each = each;
 
-  return $;
+  min$.prototype = $.prototype;
+
+  return min$;
 })();
