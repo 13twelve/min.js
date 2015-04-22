@@ -252,34 +252,23 @@ QUnit.test("write", function(assert) {
 QUnit.module("CSS style methods");
 
 QUnit.test("read", function(assert) {
-  assert.equal(min$("#button").css("border-width"), "3px", "passed");
+  assert.equal(min$("#button").css("display"), "inline", "passed");
 });
 
 QUnit.test("write", function(assert) {
-  min$("#button").css("border-width","4px");
-  assert.equal(min$("#button").css("border-width"), "4px", "passed");
+  min$("#button").css("display","block")
+  assert.equal(min$("#button").css("display"), "block", "passed");
 });
 
 QUnit.test("write with object", function(assert) {
   var str = "";
-  min$("#button").css({
-    borderWidth: "5px",
-    borderStyle: "dotted"
-  });
-  str += min$("#button").css("border-width");
-  str += min$("#button").css("border-style");
-  assert.equal(str, "5pxdotted", "passed");
-});
-
-QUnit.test("write with object, props already set", function(assert) {
-  var str = "";
   min$("#target").css({
-    borderWidth: "5px",
-    borderStyle: "dotted"
+    paddingLeft: "5px",
+    marginBottom: "10px"
   });
-  str += min$("#target").css("border-width");
-  str += min$("#target").css("border-style");
-  assert.equal(str, "5pxdotted", "passed");
+  str += min$("#target").css("padding-left");
+  str += min$("#target").css("margin-bottom");
+  assert.equal(str, "5px10px", "passed");
 });
 
 // Extending

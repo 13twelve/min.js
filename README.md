@@ -16,7 +16,7 @@ Uses querySelectorAll, addEventListener, getComputedStyle and Object.keys. If th
 Tested in:
 * Chrome 41, Mac
 * Safari 8, Mac
-* Firefox 36, Mac **CSS Methods fail**
+* Firefox 36, Mac
 * IE9, Windows 7 **fails on document.contains()**
 
 
@@ -204,6 +204,8 @@ min$('a:first-child').css({
 ```
 
 Assumes the first item if passed a collection larger than 1.
+
+Careful with reading shorthand properties in Firefox, it doesn't handle them like Webkit [Bugzilla - Bug 137688](https://bugzilla.mozilla.org/show_bug.cgi?id=137688)
 
 ## Extending
 
