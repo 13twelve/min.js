@@ -1,6 +1,6 @@
 # min.js
 
-v2.0.1
+v2.0.2
 
 A super tiny JavaScript library to execute simple DOM querying, hooking name spaced event listeners, trigger events and some simple DOM node helpers. Creates objects with prototypes rather than adding prototypes to nodes themselves.
 
@@ -11,18 +11,30 @@ Checks for querySelectorAll, addEventListener, window.getComputedStyle and Objec
 
 ## Browser Compatibility
 
-Uses querySelectorAll, addEventListener, getComputedStyle and Object.keys. If the browser doesn't support these it stops running. Effectively this means modern browsers (IE9+).
+Uses querySelectorAll, addEventListener, getComputedStyle and Object.keys. If the browser doesn't support these it stops running.
 
-Tested in:
-* Chrome 41, Mac
-* Safari 8, Mac
-* Firefox 36, Mac
-* IE9, Windows 7
+Tests pass in:
+* Chrome 41, 42, 43 (OSX)
+* Chrome 42 (Windows 7)
+* Chrome 42 (Android 5)
+* Chrome 42 (Android 4.4.4)
+* Safari 8 (OSX)
+* Safari (iOS8.3)
+* Firefox 36 (OSX)
+* Firefox 34 (Windows 7)
+* IE9 (Windows 7)
+* IE10 (Windows 7)
+* IE11 (Windows 7)
+* Android 4.4.4 stock browser
+
+Currently Firefox 4 (March 2010) and Safari 5 (June 2010) fail with "on". Firefox 4 also struggles with "document.body.contains". Looks like you need a late 2011 desktop browser.
+
+Android 4.1.1 fails with "on" also ** Further Android support soon **
 
 
 ## Filesize
 
-* ~5kb uncompressed
+* ~6kb uncompressed
 * ~2kb minified
 * ~1kb minified and gzipped
 
