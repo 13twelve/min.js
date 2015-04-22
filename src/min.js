@@ -146,21 +146,25 @@ min$ = (function () {
       }
     },
     css:function(p,v){
-      var el = (this.length > 0) ? this[0] : this;
-      if (!document.body.contains(el)) { return this; }
       if (typeof p === "object") {
-        for (var n in p) {
-          if (p.hasOwnProperty(n)) {
-            el.style[n] = p[n];
+        each(this,function(el){
+          for (var n in p) {
+            if (p.hasOwnProperty(n)) {
+              el.style[n] = p[n];
+            }
           }
-        }
-        return el;
+        });
+        return this;
       } else {
         if (v === undefined) {
+          var el = (this.length > 0) ? this[0] : this;
+          if (!document.body.contains(el)) { return this; }
           return window.getComputedStyle(el,null).getPropertyValue(p);
         } else {
-          el.style[p] = v;
-          return el;
+          each(this,function(el){
+            el.style[p] = v;
+          });
+          return this;
         }
       }
     },
