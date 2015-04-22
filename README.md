@@ -289,9 +289,6 @@ $.extend({foo:"bar"},{bar:"foo"}); // Object {foo: "bar", bar: "foo"}
 
 [Qunit](https://qunitjs.com/) tests: [http://www.thirteentwelve.com/minjs/test/test.html](http://www.thirteentwelve.com/minjs/test/test.html)
 
-Missing tests for:
-* chaining
-
 ## More info
 
 * License: MIT

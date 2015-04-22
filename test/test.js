@@ -297,3 +297,83 @@ QUnit.test("extend min$ prototype", function(assert) {
 });
 
 // Chaining
+QUnit.module("Chaining");
+
+QUnit.test("each", function(assert) {
+  var str = "";
+  var count = 0;
+  var test = min$("li").each(function(el){
+    count++;
+  });
+  str += typeof test;
+  str += (test.length && test.addClass) ? "true" : "false";
+  assert.equal(str, "objecttrue", "passed");
+});
+QUnit.test("on", function(assert) {
+  var str = "";
+  var count = 0;
+  var test = min$("li").on("click",function(el){
+    count++;
+  });
+  str += typeof test;
+  str += (test.length && test.addClass) ? "true" : "false";
+  assert.equal(str, "objecttrue", "passed");
+});
+QUnit.test("off", function(assert) {
+  var str = "";
+  var test = min$("li").off("click");
+  str += typeof test;
+  str += (test.length && test.addClass) ? "true" : "false";
+  assert.equal(str, "objecttrue", "passed");
+});
+QUnit.test("trigger", function(assert) {
+  var str = "";
+  var test = min$("li").trigger("foo");
+  str += typeof test;
+  str += (test.length && test.addClass) ? "true" : "false";
+  assert.equal(str, "objecttrue", "passed");
+});
+QUnit.test("addClass", function(assert) {
+  var str = "";
+  var test = min$("li").addClass("foo");
+  str += typeof test;
+  str += (test.length && test.addClass) ? "true" : "false";
+  assert.equal(str, "objecttrue", "passed");
+});
+QUnit.test("removeClass", function(assert) {
+  var str = "";
+  var test = min$("li").removeClass("foo");
+  str += typeof test;
+  str += (test.length && test.addClass) ? "true" : "false";
+  assert.equal(str, "objecttrue", "passed");
+});
+QUnit.test("write attribute", function(assert) {
+  var str = "";
+  var test = min$("li").attr("foo","bar");
+  str += typeof test;
+  str += (test.length && test.addClass) ? "true" : "false";
+  assert.equal(str, "objecttrue", "passed");
+});
+QUnit.test("set style", function(assert) {
+  var str = "";
+  var test = min$("li").css("display","block");
+  str += typeof test;
+  str += (test.length && test.addClass) ? "true" : "false";
+  assert.equal(str, "objecttrue", "passed");
+});
+QUnit.test("set style with object", function(assert) {
+  var str = "";
+  var test = min$("li").css({ display:"block" });
+  str += typeof test;
+  str += (test.length && test.addClass) ? "true" : "false";
+  assert.equal(str, "objecttrue", "passed");
+});
+QUnit.test("chaining sanity check", function(assert) {
+  var str = "";
+  var test = min$("li").addClass("foo").removeClass("foo");
+  str += typeof test;
+  str += (test.length && test.addClass) ? "true" : "false";
+  str += min$("li.foo").length;
+  assert.equal(str, "objecttrue0", "passed");
+});
+
