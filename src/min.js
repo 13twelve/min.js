@@ -108,7 +108,7 @@ min$ = (function () {
       each(this,function(el){
         if (el.classList) {
           el.classList.add(className);
-        } else if (!$(el).hasClass(className)) {
+        } else if (!min$(el).hasClass(className)) {
           el.className += ' ' + className;
         }
       });
@@ -126,17 +126,16 @@ min$ = (function () {
     },
     hasClass:function(className){
       var el = (this.length > 0) ? this[0] : this;
-      if (!document.contains(el)) { return this; }
+      if (!document.body.contains(el)) { return this; }
       if (el.classList) {
         return el.classList.contains(className);
       } else {
         return new RegExp('(^| )' + className + '( |$)', 'gi').test(el.className);
       }
-      return el;
     },
     attr:function(a,v){
       var el = (this.length > 0) ? this[0] : this;
-      if (!document.contains(el)) { return this; }
+      if (!document.body.contains(el)) { return this; }
       if (v === undefined) {
         return el.getAttribute(a);
       } else {
@@ -146,7 +145,7 @@ min$ = (function () {
     },
     css:function(p,v){
       var el = (this.length > 0) ? this[0] : this;
-      if (!document.contains(el)) { return this; }
+      if (!document.body.contains(el)) { return this; }
       if (typeof p === "object") {
         for (var n in p) {
           if (p.hasOwnProperty(n)) {
@@ -167,7 +166,7 @@ min$ = (function () {
       var n = -1;
       if (item) {
         item = (item.length > 0 || item.addClass) ? item[0] : item;
-        if (!document.contains(item)) {
+        if (!document.body.contains(item)) {
           return n;
         }
       } else {

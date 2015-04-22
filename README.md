@@ -17,7 +17,7 @@ Tested in:
 * Chrome 41, Mac
 * Safari 8, Mac
 * Firefox 36, Mac
-* IE9, Windows 7 **fails on document.contains()**
+* IE9, Windows 7
 
 
 ## Filesize
