@@ -134,7 +134,7 @@ min$ = (function () {
       }
       return el;
     },
-    attr:function(){
+    attr:function(a,v){
       var el = (this.length > 0) ? this[0] : this;
       if (!document.contains(el)) { return this; }
       if (v === undefined) {
@@ -156,7 +156,7 @@ min$ = (function () {
         return el;
       } else {
         if (v === undefined) {
-          return document.defaultView.getComputedStyle(el,null).getPropertyValue(p);
+          return window.getComputedStyle(el,null).getPropertyValue(p);
         } else {
           el.style[p] = v;
           return el;
