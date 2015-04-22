@@ -272,5 +272,28 @@ QUnit.test("write with object", function(assert) {
 });
 
 // Extending
+QUnit.module("Extending");
+
+QUnit.test("extend min$", function(assert) {
+  var str = "";
+  min$.extend_test = function(num) {
+    return num * 2;
+  };
+  str += typeof min$.extend_test;
+  str += min$.extend_test(1);
+  assert.equal(str, "function2", "passed");
+});
+
+QUnit.test("extend min$ prototype", function(assert) {
+  var str = "";
+  min$.prototype.extend_test = function() {
+    var el = (this.length > 0) ? this[0] : this;
+    if (!document.body.contains(el)) { return this; }
+    return el.tagName.toLowerCase();
+  };
+  str += typeof min$.prototype.extend_test;
+  str += min$("#target").extend_test();
+  assert.equal(str, "functiondiv", "passed");
+});
 
 // Chaining

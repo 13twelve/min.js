@@ -241,7 +241,7 @@ This example returns the offset of an element. If your collection has more than 
 ```js
 min$.prototype.offset = function(){
   var node = (this.length > 0) ? this[0] : this;
-  if (document.contains(node)) {
+  if (document.body.contains(node)) {
     var rect = node.getBoundingClientRect()
     return {
       top: rect.top + document.body.scrollTop,
@@ -293,7 +293,6 @@ $.extend({foo:"bar"},{bar:"foo"}); // Object {foo: "bar", bar: "foo"}
 
 Missing tests for:
 * chaining
-* extending
 
 ## More info
 
