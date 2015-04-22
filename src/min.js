@@ -134,13 +134,15 @@ min$ = (function () {
       }
     },
     attr:function(a,v){
-      var el = (this.length > 0) ? this[0] : this;
-      if (!document.body.contains(el)) { return this; }
       if (v === undefined) {
+        var el = (this.length > 0) ? this[0] : this;
+        if (!document.body.contains(el)) { return this; }
         return el.getAttribute(a);
       } else {
-        el.setAttribute(a,v);
-        return el;
+        each(this,function(el){
+          el.setAttribute(a,v);
+        });
+        return this;
       }
     },
     css:function(p,v){

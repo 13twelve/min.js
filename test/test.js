@@ -244,8 +244,8 @@ QUnit.test("read", function(assert) {
 });
 
 QUnit.test("write", function(assert) {
-  min$("#list_item_1").attr("data-attribute","test");
-  assert.equal(min$("#list_item_1").attr("data-attribute"), "test", " passed");
+  min$("ol > li").attr("data-attribute","test");
+  assert.equal(min$("#list_item_3").attr("data-attribute"), "test", " passed");
 });
 
 // Read/write CSS styles

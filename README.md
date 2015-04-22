@@ -186,11 +186,9 @@ var is_foo = min$('a').hasClass("foo"); // assumes the first item, returns true/
 ## Read/write attributes
 
 ```js
-min$('div:last-child').attr('data-url'); // returns contents of attribute
-min$('div:first-child').attr('data-url','http://www.github.com/13twelve'); // sets attribute
+min$('div:last-child').attr('data-url'); // returns contents of attribute for first returned element
+min$('div').attr('data-url','http://www.github.com/13twelve'); // sets attribute on all divs
 ```
-
-Assumes the first item if passed a collection larger than 1.
 
 ## Read/write CSS styles
 
