@@ -1,8 +1,11 @@
+QUnit.module("Global");
+
 QUnit.test("min$ valid function", function(assert) {
   assert.equal(typeof min$, "function", "min$ valid function passed");
 });
 
 // Query elements
+QUnit.module("Query elements");
 
 QUnit.test("Query tagName", function(assert) {
   assert.equal(min$('ul').length, 1, "Query tagName passed");
@@ -34,6 +37,7 @@ QUnit.test("Query with min$ object", function(assert) {
 
 
 // Looping
+QUnit.module("Looping");
 
 QUnit.test("Looping: each", function(assert) {
   var str = "";
@@ -65,6 +69,7 @@ QUnit.test("Looping: $.each", function(assert) {
 
 
 // Events - on
+QUnit.module("Events - on");
 
 QUnit.test("Events: on", function(assert) {
   assert.expect(1);
@@ -85,6 +90,7 @@ QUnit.test("Events: on.namespace", function(assert) {
 });
 
 // Events - trigger
+QUnit.module("Events - trigger");
 
 QUnit.test("Events: trigger", function(assert) {
   assert.expect(1);
@@ -95,6 +101,7 @@ QUnit.test("Events: trigger", function(assert) {
 });
 
 // Events - custom
+QUnit.module("Events - custom");
 
 QUnit.test("Events: custom", function(assert) {
   assert.expect(1);
@@ -105,6 +112,7 @@ QUnit.test("Events: custom", function(assert) {
 });
 
 // Events - off
+QUnit.module("Events - off");
 
 QUnit.test("Events: off (all handlers)", function(assert) {
   var count = 0;
@@ -172,56 +180,108 @@ QUnit.test("Events: off (namespaced handler)", function(assert) {
 });
 
 // Index
+QUnit.module("Index method");
 
 var index_test_html = '<ol><li><a href="#">a</a></li><li><a href="#">b</a></li><li id="index_test"><a href="#">c</a></li></ol>';
 
-QUnit.test("Index: passing a node", function(assert) {
+QUnit.test("passing a node", function(assert) {
   document.getElementById("target").innerHTML = index_test_html;
   var node = document.getElementById("index_test");
   var pos = min$("#target ol > li").index(node);
   document.getElementById("target").innerHTML = "";
-  assert.equal(pos, 2, "Index: passing a node - passed");
+  assert.equal(pos, 2, "passed");
 });
 
-QUnit.test("Index: passing a min$ collection", function(assert) {
+QUnit.test("passing a min$ collection", function(assert) {
   document.getElementById("target").innerHTML = index_test_html;
   var node = min$("#index_test");
   var pos = min$("#target ol > li").index(node);
   document.getElementById("target").innerHTML = "";
-  assert.equal(pos, 2, "Index: passing a min$ collection - passed");
+  assert.equal(pos, 2, "passed");
 });
 
-QUnit.test("Index: nothing passed", function(assert) {
+QUnit.test("nothing passed", function(assert) {
   document.getElementById("target").innerHTML = index_test_html;
   var pos = min$("#target ol > li").index();
   document.getElementById("target").innerHTML = "";
-  assert.equal(pos, 0, "Index: nothing passed - passed");
+  assert.equal(pos, 0, "passed");
 });
 
-QUnit.test("Index: no match", function(assert) {
+QUnit.test("no match", function(assert) {
   document.getElementById("target").innerHTML = index_test_html;
   var node = min$("#fail");
   var pos = min$("#target ol > li").index(node);
   document.getElementById("target").innerHTML = "";
-  assert.equal(pos, -1, "Index: no match - passed");
+  assert.equal(pos, -1, "passed");
 });
 
-// CSS class functions
+// CSS class methods
+QUnit.module("CSS Class methods");
 
-QUnit.test("CSS class functions: add", function(assert) {
+QUnit.test("add", function(assert) {
   min$("ul > li").addClass("testClass");
-  assert.equal(min$('ul > li.testClass').length, 3, "CSS class functions: add - passed");
+  assert.equal(min$('ul > li.testClass').length, 3, "passed");
 });
 
-QUnit.test("CSS class functions: remove", function(assert) {
+QUnit.test("remove", function(assert) {
   min$("ul > li.removeClass").removeClass("removeClass");
-  assert.equal(min$('ul > li.removeClass').length, 0, "CSS class functions: remove - passed");
+  assert.equal(min$('ul > li.removeClass').length, 0, "passed");
 });
 
-QUnit.test("CSS class functions: hasClass, class present", function(assert) {
-  assert.equal(min$("#list_item_1").hasClass("hasClass"), true, "CSS class functions: hasClass, class present - passed");
+QUnit.test("hasClass, class present", function(assert) {
+  assert.equal(min$("#list_item_1").hasClass("hasClass"), true, "passed");
 });
 
-QUnit.test("CSS class functions: hasClass, class not present", function(assert) {
-  assert.equal(min$("#list_item_2").hasClass("hasClass"), false, "CSS class functions: hasClass, class present - passed");
+QUnit.test("hasClass, class not present", function(assert) {
+  assert.equal(min$("#list_item_2").hasClass("hasClass"), false, "passed");
 });
+
+// Read/write attributes
+QUnit.module("Attributes methods");
+
+QUnit.test("read", function(assert) {
+  assert.equal(min$("ul").attr("data-attribute"), "test", "passed");
+});
+
+QUnit.test("write", function(assert) {
+  min$("#list_item_1").attr("data-attribute","test");
+  assert.equal(min$("#list_item_1").attr("data-attribute"), "test", " passed");
+});
+
+// Read/write CSS styles
+QUnit.module("CSS style methods");
+
+QUnit.test("read", function(assert) {
+  assert.equal(min$("#button").css("border-width"), "3px", "passed");
+});
+
+QUnit.test("write", function(assert) {
+  min$("#button").css("border-width","4px");
+  assert.equal(min$("#button").css("border-width"), "4px", "passed");
+});
+
+QUnit.test("write with object", function(assert) {
+  var str = "";
+  min$("#button").css({
+    borderWidth: "5px",
+    borderStyle: "dotted"
+  });
+  str += min$("#button").css("border-width");
+  str += min$("#button").css("border-style");
+  assert.equal(str, "5pxdotted", "passed");
+});
+
+QUnit.test("write with object, props already set", function(assert) {
+  var str = "";
+  min$("#target").css({
+    borderWidth: "5px",
+    borderStyle: "dotted"
+  });
+  str += min$("#target").css("border-width");
+  str += min$("#target").css("border-style");
+  assert.equal(str, "5pxdotted", "passed");
+});
+
+// Extending
+
+// Chaining

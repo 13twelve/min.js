@@ -13,7 +13,11 @@ Checks for querySelectorAll, addEventListener, window.getComputedStyle and Objec
 
 Uses querySelectorAll, addEventListener, getComputedStyle and Object.keys. If the browser doesn't support these it stops running. Effectively this means modern browsers (IE9+).
 
-**Individual browser tests not yet completed**
+Tested in:
+* Chrome 41, Mac
+* Safari 8, Mac
+* Firefox 36, Mac **CSS Methods fail**
+* IE9, Windows 7 **fails on document.contains()**
 
 
 ## Filesize
@@ -171,8 +175,6 @@ If nothing is passed then the returned number will be that of the first child of
 min$('a').on('foo', bar).on('click', doclick).trigger('foobar');
 ```
 
-** Needs testing **
-
 ## Add, remove, has CSS class
 
 ```js
@@ -283,9 +285,13 @@ window.$ = min$;
 $.extend({foo:"bar"},{bar:"foo"}); // Object {foo: "bar", bar: "foo"}
 ```
 
-## Silent failing
+## Tests
 
-This tiny library silently fails when it doesn't match any elements.
+[Qunit](https://qunitjs.com/) tests: [http://www.thirteentwelve.com/minjs/test/test.html](http://www.thirteentwelve.com/minjs/test/test.html)
+
+Missing tests for:
+* chaining
+* extending
 
 ## More info
 
