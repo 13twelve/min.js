@@ -295,7 +295,6 @@ These libraries aim to replicate the jQuery API in a more complete way:
 * [Cash](https://github.com/kenwheeler/cash)
 * [Sprint](https://github.com/bendc/sprint)
 * [Zepto](http://zeptojs.com/)
-* + Many more
 
 
 ## More info
