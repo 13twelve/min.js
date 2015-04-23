@@ -13,21 +13,17 @@ Checks for querySelectorAll, addEventListener, window.getComputedStyle and Objec
 
 Uses querySelectorAll, addEventListener, getComputedStyle and Object.keys. If the browser doesn't support these it stops running.
 
+[Qunit](https://qunitjs.com/) tests: [http://www.thirteentwelve.com/minjs/test/test.html](http://www.thirteentwelve.com/minjs/test/test.html)
+
 Tests pass in:
 * Chrome 41, 42, 43 (OSX)
-* Chrome 42 (Windows 7)
-* Chrome 42 (Android 5)
-* Chrome 42 (Android 4.4.4)
+* Chrome 42 (Windows 7, Android 5, Android 4.4.4)
 * Safari 5, 8 (OSX)
-* Safari (iOS8.3)
+* Safari 7.1, 8.3 (iOS)
 * Firefox 4, 36 (OSX)
 * Firefox 34 (Windows 7)
-* IE9 (Windows 7)
-* IE10 (Windows 7)
-* IE11 (Windows 7)
-* Android 4.4.4 native browser
-
-**Further Android support soon**
+* IE9, IE10, IE11 (Windows 7)
+* Android 2.3.7, 4.1.1, 4.2.2, 4.3, 4.4.4, 5, 5.1 native browser
 
 
 ## Filesize
@@ -294,10 +290,6 @@ Or aliased:
 window.$ = min$;
 $.merge_objects({foo:"bar"},{bar:"foo"}); // Object {foo: "bar", bar: "foo"}
 ```
-
-## Tests
-
-[Qunit](https://qunitjs.com/) tests: [http://www.thirteentwelve.com/minjs/test/test.html](http://www.thirteentwelve.com/minjs/test/test.html)
 
 ## More info
 
