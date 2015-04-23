@@ -67,6 +67,16 @@ QUnit.test("Looping: $.each", function(assert) {
   assert.equal(str, "0a1b2c", "$.each passed");
 });
 
+// Events - trigger
+QUnit.module("Events - trigger");
+
+QUnit.test("Events: trigger", function(assert) {
+  assert.expect(1);
+  document.getElementById("button").addEventListener("click", function(){
+    assert.ok(true, "Events: trigger - passed");
+  }, false);
+  min$("#button").trigger("click");
+});
 
 // Events - on
 QUnit.module("Events - on");
@@ -76,26 +86,13 @@ QUnit.test("Events: on", function(assert) {
   min$("#button").on("click", function() {
     assert.ok(true, "Events: on - passed");
   });
-  // using jquery to trigger the click, so we're not testing min$ trigger yet!
-  jQuery("#button").trigger("click");
+  min$("#button").trigger("click");
 });
 
 QUnit.test("Events: on.namespace", function(assert) {
   assert.expect(1);
   min$("#button").on("click.namespace", function() {
     assert.ok(true, "Events: on.namespace - passed");
-  });
-  // using jquery to trigger the click, so we're not testing min$ trigger yet!
-  jQuery("#button").trigger("click.namespace");
-});
-
-// Events - trigger
-QUnit.module("Events - trigger");
-
-QUnit.test("Events: trigger", function(assert) {
-  assert.expect(1);
-  min$("#button").on("click", function() {
-    assert.ok(true, "Events: trigger - passed");
   });
   min$("#button").trigger("click");
 });
@@ -210,7 +207,7 @@ QUnit.test("nothing passed", function(assert) {
 QUnit.test("no match", function(assert) {
   document.getElementById("target").innerHTML = index_test_html;
   var node = min$("#fail");
-  var pos = min$("#target ol > li").index(node);
+  var pos = min$("#target ol > li").index(node,true);
   document.getElementById("target").innerHTML = "";
   assert.equal(pos, -1, "passed");
 });
@@ -287,8 +284,7 @@ QUnit.test("extend min$", function(assert) {
 QUnit.test("extend min$ prototype", function(assert) {
   var str = "";
   min$.prototype.extend_test = function() {
-    var el = (this.length > 0) ? this[0] : this;
-    if (!document.body.contains(el)) { return this; }
+    var el = this[0];
     return el.tagName.toLowerCase();
   };
   str += typeof min$.prototype.extend_test;
