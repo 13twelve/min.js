@@ -4,9 +4,7 @@ v2.0.3
 
 A super tiny JavaScript library to execute simple DOM querying, hooking name spaced event listeners, trigger events and some simple DOM node helpers. Creates objects with prototypes rather than adding prototypes to nodes themselves.
 
-This is a re-write of my [fork](https://github.com/13twelve/min_v1.js) of Remy Sharp's [min.js](https://github.com/remy/min.js).
-
-Checks for querySelectorAll, addEventListener, window.getComputedStyle and Object.keys. Returns undefined if not present.
+This is not jQuery or a jQuery replacement - more a convenience library to help you type less when writing vanilla JS.
 
 
 ## Browser Compatibility
@@ -64,7 +62,7 @@ var first_div = divs[0]; // node
 
 ## $ Selector
 
-min.js isn't jQuery. Though the few methods it does have, work similar to jQuery. The intention is that using this will save you some typing on some common repeated JavaScript tasks. You can, of course, bind $ to min$:
+min.js isn't jQuery. Though the few methods it does have, work similar to jQuery. You can, of course, bind $ to min$:
 
 ```js
 window.$ = min$;
