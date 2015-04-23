@@ -4,7 +4,7 @@ v2.0.3
 
 A super tiny JavaScript library to execute simple DOM querying, hooking name spaced event listeners, trigger events and some simple DOM node helpers. Creates objects with prototypes rather than adding prototypes to nodes themselves.
 
-This is not jQuery or a jQuery replacement - more a convenience library to help you type less when writing vanilla JS.
+This is not jQuery or a jQuery replacement - more a convenience library to help you type less when writing vanilla JS. It intentionally doesn't try to replicate jQuery's API in order to keep its size down and encourage you to write vanilla JS on your own.
 
 
 ## Browser Compatibility
@@ -62,7 +62,7 @@ var first_div = divs[0]; // node
 
 ## $ Selector
 
-min.js isn't jQuery. Though the few methods it does have, work similar to jQuery. You can, of course, bind $ to min$:
+min.js isn't jQuery. You can, of course, bind $ to min$:
 
 ```js
 window.$ = min$;
@@ -289,6 +289,15 @@ window.$ = min$;
 $.merge_objects({foo:"bar"},{bar:"foo"}); // Object {foo: "bar", bar: "foo"}
 ```
 
+## Alternatives
+
+These libraries aim to replicate the jQuery API in a more complete way:
+* [Cash](https://github.com/kenwheeler/cash)
+* [Sprint](https://github.com/bendc/sprint)
+* [Zepto](http://zeptojs.com/)
+* + Many more
+
+
 ## More info
 
-* License: MIT
+License: MIT
