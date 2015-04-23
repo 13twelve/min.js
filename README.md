@@ -27,9 +27,9 @@ Tests pass in:
 * IE11 (Windows 7)
 * Android 4.4.4 stock browser
 
-Currently Firefox 4 (March 2010) and Safari 5 (June 2010) fail with "on". Firefox 4 also struggles with "document.body.contains". Looks like you need a late 2011 desktop browser.
+Currently Firefox 4 (March 2010) and Safari 5 (June 2010) fail with "on" - probably because I'm justing jQuery's trigger to trigger the event thats listened to, and Jquery isn't firing native events in those browsers. Firefox 4 also struggles with "document.body.contains". Looks like you need a late 2011 desktop browser.
 
-Android 4.1.1 fails with "on" also ** Further Android support soon **
+** Further Android support soon **
 
 
 ## Filesize
@@ -287,14 +287,14 @@ min$.merge_objects = function(obj1,obj2){
 Then you could use:
 
 ```js
-min$.extend({foo:"bar"},{bar:"foo"}); // Object {foo: "bar", bar: "foo"}
+min$.merge_objects({foo:"bar"},{bar:"foo"}); // Object {foo: "bar", bar: "foo"}
 ```
 
 Or aliased:
 
 ```js
 window.$ = min$;
-$.extend({foo:"bar"},{bar:"foo"}); // Object {foo: "bar", bar: "foo"}
+$.merge_objects({foo:"bar"},{bar:"foo"}); // Object {foo: "bar", bar: "foo"}
 ```
 
 ## Tests
