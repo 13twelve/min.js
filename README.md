@@ -2,7 +2,7 @@
 
 v2.0.3
 
-A super tiny JavaScript library to execute simple DOM querying, hooking name spaced event listeners, trigger events and some simple DOM node helpers. Creates objects with prototypes rather than adding prototypes to nodes themselves.
+A super tiny JavaScript library to execute simple DOM querying, hooking name spaced event listeners, trigger events and some simple DOM node helpers.
 
 This is not jQuery or a jQuery replacement - more a convenience library to help you type less when writing vanilla JS. It intentionally doesn't try to replicate jQuery's API in order to keep its size down and encourage you to write vanilla JS on your own.
 
@@ -295,6 +295,11 @@ These libraries aim to replicate the jQuery API in a more complete way:
 * [Cash](https://github.com/kenwheeler/cash)
 * [Sprint](https://github.com/bendc/sprint)
 * [Zepto](http://zeptojs.com/)
+
+
+## Inspiration
+
+minjs is inspired by [Remy Sharp's](https://github.com/remy) [minjs](https://github.com/remy/min.js). Remy chose to extend the global node prototype where as this minjs has its own prototype.
 
 
 ## More info
