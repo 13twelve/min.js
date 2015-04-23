@@ -1,6 +1,6 @@
 # min.js
 
-v2.0.2
+v2.0.3
 
 A super tiny JavaScript library to execute simple DOM querying, hooking name spaced event listeners, trigger events and some simple DOM node helpers. Creates objects with prototypes rather than adding prototypes to nodes themselves.
 
@@ -18,18 +18,16 @@ Tests pass in:
 * Chrome 42 (Windows 7)
 * Chrome 42 (Android 5)
 * Chrome 42 (Android 4.4.4)
-* Safari 8 (OSX)
+* Safari 5, 8 (OSX)
 * Safari (iOS8.3)
-* Firefox 36 (OSX)
+* Firefox 4, 36 (OSX)
 * Firefox 34 (Windows 7)
 * IE9 (Windows 7)
 * IE10 (Windows 7)
 * IE11 (Windows 7)
-* Android 4.4.4 stock browser
+* Android 4.4.4 native browser
 
-Currently Firefox 4 (March 2010) and Safari 5 (June 2010) fail with "on" - probably because I'm justing jQuery's trigger to trigger the event thats listened to, and Jquery isn't firing native events in those browsers. Firefox 4 also struggles with "document.body.contains". Looks like you need a late 2011 desktop browser.
-
-** Further Android support soon **
+**Further Android support soon**
 
 
 ## Filesize

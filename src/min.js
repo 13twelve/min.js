@@ -1,3 +1,13 @@
+/*!
+ * minjs
+ * v2.0.3
+ * https://github.com/13twelve/min.js
+ * http://www.thirteentwelve.com/minjs/test/test.html (tests)
+ *
+ * Released under the MIT license
+ *
+ * Date: 2015-04-23
+ */
 min$ = (function () {
 
   // Kill exeuction for bad browsers
@@ -31,6 +41,11 @@ min$ = (function () {
     }
     return arr;
   };
+
+  function contains(node){
+    var d = document;
+    return d.contains ? d != node && d.contains(node) : !!(d.compareDocumentPosition(node) & 16);
+  }
 
   // the main methods of minjs
   $.prototype = {
@@ -126,7 +141,7 @@ min$ = (function () {
     },
     hasClass:function(className){
       var el = (this.length > 0) ? this[0] : this;
-      if (!document.body.contains(el)) { return this; }
+      if (!contains(el)) { return this; }
       if (el.classList) {
         return el.classList.contains(className);
       } else {
@@ -136,7 +151,7 @@ min$ = (function () {
     attr:function(a,v){
       if (v === undefined) {
         var el = (this.length > 0) ? this[0] : this;
-        if (!document.body.contains(el)) { return this; }
+        if (!contains(el)) { return this; }
         return el.getAttribute(a);
       } else {
         each(this,function(el){
@@ -158,7 +173,7 @@ min$ = (function () {
       } else {
         if (v === undefined) {
           var el = (this.length > 0) ? this[0] : this;
-          if (!document.body.contains(el)) { return this; }
+          if (!contains(el)) { return this; }
           return window.getComputedStyle(el,null).getPropertyValue(p);
         } else {
           each(this,function(el){
@@ -168,11 +183,11 @@ min$ = (function () {
         }
       }
     },
-    index:function(item){
+    index:function(item,show){
       var n = -1;
       if (item) {
         item = (item.length > 0 || item.addClass) ? item[0] : item;
-        if (!document.body.contains(item)) {
+        if (item === undefined || !contains(item)) {
           return n;
         }
       } else {
