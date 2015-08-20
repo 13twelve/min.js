@@ -1,6 +1,6 @@
 /*!
  * minjs
- * v2.0.4
+ * v2.0.5
  * https://github.com/13twelve/min.js
  * http://www.thirteentwelve.com/minjs/test/test.html (tests)
  *
@@ -42,13 +42,8 @@ min$ = (function () {
     return arr;
   };
 
-  function contains(node){
-    var d = document;
-    return d.contains ? d != node && d.contains(node) : !!(d.compareDocumentPosition(node) & 16);
-  }
-
-  function testForClass(node,className){
-    return new RegExp('(^| )' + className + '( |$)', 'gi').test(node.className);
+  function valid(node){
+    return node.nodeType === (1||9||11);
   }
 
   // the main methods of minjs
@@ -127,7 +122,7 @@ min$ = (function () {
       each(this,function(el){
         if (el.classList) {
           el.classList.add(className);
-        } else if (!testForClass(el,className)) {
+        } else if (!min$(el).hasClass(className)) {
           el.className += ' ' + className;
         }
       });
@@ -145,17 +140,17 @@ min$ = (function () {
     },
     hasClass:function(className){
       var el = (this.length > 0) ? this[0] : this;
-      if (!contains(el)) { return this; }
+      if (!valid(el)) { return this; }
       if (el.classList) {
         return el.classList.contains(className);
       } else {
-        return testForClass(el,className);
+        return new RegExp('(^| )' + className + '( |$)', 'gi').test(el.className);
       }
     },
     attr:function(a,v){
       if (v === undefined) {
         var el = (this.length > 0) ? this[0] : this;
-        if (!contains(el)) { return this; }
+        if (!valid(el)) { return this; }
         return el.getAttribute(a);
       } else {
         each(this,function(el){
@@ -177,7 +172,7 @@ min$ = (function () {
       } else {
         if (v === undefined) {
           var el = (this.length > 0) ? this[0] : this;
-          if (!contains(el)) { return this; }
+          if (!valid(el)) { return this; }
           return window.getComputedStyle(el,null).getPropertyValue(p);
         } else {
           each(this,function(el){
@@ -191,7 +186,7 @@ min$ = (function () {
       var n = -1;
       if (item) {
         item = (item.length > 0 || item.addClass) ? item[0] : item;
-        if (item === undefined || !contains(item)) {
+        if (item === undefined || !valid(item)) {
           return n;
         }
       } else {
