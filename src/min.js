@@ -1,12 +1,12 @@
 /*!
  * minjs
- * v2.0.3
+ * v2.0.4
  * https://github.com/13twelve/min.js
  * http://www.thirteentwelve.com/minjs/test/test.html (tests)
  *
  * Released under the MIT license
  *
- * Date: 2015-04-23
+ * Date: 2015-08-15
  */
 min$ = (function () {
 
@@ -45,6 +45,10 @@ min$ = (function () {
   function contains(node){
     var d = document;
     return d.contains ? d != node && d.contains(node) : !!(d.compareDocumentPosition(node) & 16);
+  }
+
+  function testForClass(node,className){
+    return new RegExp('(^| )' + className + '( |$)', 'gi').test(node.className);
   }
 
   // the main methods of minjs
@@ -123,7 +127,7 @@ min$ = (function () {
       each(this,function(el){
         if (el.classList) {
           el.classList.add(className);
-        } else if (!min$(el).hasClass(className)) {
+        } else if (!testForClass(el,className)) {
           el.className += ' ' + className;
         }
       });
@@ -145,7 +149,7 @@ min$ = (function () {
       if (el.classList) {
         return el.classList.contains(className);
       } else {
-        return new RegExp('(^| )' + className + '( |$)', 'gi').test(el.className);
+        return testForClass(el,className);
       }
     },
     attr:function(a,v){

@@ -1,6 +1,7 @@
 # min.js
 
-v2.0.3
+v2.0.4
+2015-08-15
 
 A super tiny JavaScript library to execute simple DOM querying, hooking name spaced event listeners, trigger events and some simple DOM node helpers.
 
@@ -27,7 +28,7 @@ Tests pass in:
 ## Filesize
 
 * ~6kb uncompressed
-* ~2kb minified
+* ~3kb minified
 * ~1kb minified and gzipped
 
 
