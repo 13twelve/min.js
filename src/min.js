@@ -8,7 +8,7 @@
  *
  * Date: 2015-08-15
  */
-min$ = (function () {
+min$ = (function (window, document, undefined) {
 
   // Kill exeuction for bad browsers
   if(typeof document.querySelectorAll === undefined || !('addEventListener' in window) || !window.getComputedStyle || !Object.keys) {
@@ -217,4 +217,4 @@ min$ = (function () {
   min$.prototype = $.prototype;
 
   return min$;
-})();
+})(window, document);
