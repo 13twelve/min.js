@@ -305,8 +305,9 @@ minjs is inspired by [Remy Sharp's](https://github.com/remy) [minjs](https://git
 ## As used on the Internet
 
 * [Krrb blog](http://blog.krrb.com/) by [mrdoinel](https://github.com/mrdoinel)
-* [Dering Hall](http://www.deringhall.com/) by me
+* [Dering Hall](http://www.deringhall.com/) by myself
 * [Scientific American](http://www.scientificamerican.com/) by myself and [joecritch](https://github.com/joecritch)
+* [Library of America](https://loa.org/) by [helloimseth](https://github.com/helloimseth)
 
 If you used it in a project, please let me know!
 
