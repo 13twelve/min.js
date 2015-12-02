@@ -1,12 +1,12 @@
 /*!
  * minjs
- * v2.0.5
+ * v2.0.6
  * https://github.com/13twelve/min.js
  * http://www.thirteentwelve.com/minjs/test/test.html (tests)
  *
  * Released under the MIT license
  *
- * Date: 2015-08-15
+ * Date: 2015-12-02
  */
 min$ = (function (window, document, undefined) {
 
@@ -43,7 +43,7 @@ min$ = (function (window, document, undefined) {
   };
 
   function valid(node){
-    return node.nodeType === (1||9||11);
+    return [1, 9].indexOf(node.nodeType) > -1;
   }
 
   // the main methods of minjs
@@ -182,7 +182,7 @@ min$ = (function (window, document, undefined) {
         }
       }
     },
-    index:function(item,show){
+    index:function(item){
       var n = -1;
       if (item) {
         item = (item.length > 0 || item.addClass) ? item[0] : item;

@@ -1,6 +1,6 @@
 # min.js
 
-v2.0.5 / 2015-08-15
+v2.0.6 / 2015-12-02
 
 A super tiny JavaScript library to execute simple DOM querying, hooking name spaced event listeners, trigger events and some simple DOM node helpers.
 
@@ -14,12 +14,12 @@ Uses querySelectorAll, addEventListener, getComputedStyle and Object.keys. If th
 [Qunit](https://qunitjs.com/) tests: [http://www.thirteentwelve.com/minjs/test/test.html](http://www.thirteentwelve.com/minjs/test/test.html)
 
 Tests pass in:
-* Chrome 41, 42, 43 (OSX)
-* Chrome 42 (Windows 7, Android 5, Android 4.4.4)
-* Safari 5, 8 (OSX)
+* Chrome 41+ (OSX)
+* Chrome 41+ (Windows 7, Android 5, Android 4.4.4)
+* Safari 5, 8, 9 (OSX)
 * Safari 7.1, 8.3 (iOS)
-* Firefox 4, 36 (OSX)
-* Firefox 34 (Windows 7)
+* Firefox 4+ (OSX)
+* Firefox 34+ (Windows 7)
 * IE9, IE10, IE11 (Windows 7)
 * Android 2.3.7, 4.1.1, 4.2.2, 4.3, 4.4.4, 5, 5.1 native browser
 
@@ -299,7 +299,21 @@ These libraries aim to replicate the jQuery API in a more complete way:
 
 ## Inspiration
 
-minjs is inspired by [Remy Sharp's](https://github.com/remy) [minjs](https://github.com/remy/min.js). Remy chose to extend the global node prototype where as this minjs has its own prototype.
+minjs is inspired by [Remy Sharp's](https://github.com/remy) [minjs](https://github.com/remy/min.js). Remy chose to extend the global node prototype where as this minjs has its own prototype. Initially I forked his repo and added a few useful things and then [nedbaldessin](https://github.com/nedbaldessin) gently encouraged me to not use the global node prototype.
+
+
+## As used on the Internet
+
+* [Krrb blog](http://blog.krrb.com/) by [mrdoinel](https://github.com/mrdoinel)
+* [Dering Hall](http://www.deringhall.com/) by me
+* [Scientific American](http://www.scientificamerican.com/) by myself and [joecritch](https://github.com/joecritch)
+
+If you used it in a project, please let me know!
+
+## Thanks
+
+* [JoyceBabu](https://github.com/JoyceBabu)
+* [dandandan](http://www.dandandan.net/)
 
 
 ## More info
