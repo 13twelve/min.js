@@ -295,7 +295,7 @@ $.merge_objects({foo:"bar"},{bar:"foo"}); // Object {foo: "bar", bar: "foo"}
 minjs is available on [NPM](https://www.npmjs.com/package/minjs):
 
 ```js
-npm install cash-dom --save-dev
+npm install minjs --save-dev
 ```
 
 ## Alternatives
