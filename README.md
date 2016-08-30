@@ -115,6 +115,7 @@ min$('p:first-child a').off('.foo'); // clears foo namespaced handlers
 min$(document).on('foo', function () {
   // foo was fired
 });
+```
 
 ### Trigger events
 
@@ -287,6 +288,14 @@ Or aliased:
 ```js
 window.$ = min$;
 $.merge_objects({foo:"bar"},{bar:"foo"}); // Object {foo: "bar", bar: "foo"}
+```
+
+## NPM
+
+minjs is available on [NPM](https://www.npmjs.com/package/minjs):
+
+```js
+npm install cash-dom --save-dev
 ```
 
 ## Alternatives
