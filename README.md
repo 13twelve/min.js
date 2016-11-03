@@ -111,16 +111,26 @@ min$('p:first-child a').off('.foo'); // clears foo namespaced handlers
 
 ### Custom events
 
+#### Trigger
+
+```js
+min$(document).trigger('foo');
+
+min$(document).trigger('bar', {
+  baz: 1312
+});
+```
+
+#### Listen
+
 ```js
 min$(document).on('foo', function () {
   // foo was fired
 });
-```
 
-### Trigger events
-
-```js
-min$(document).trigger('foo');
+min$(document).on('bar', function (event) {
+  var num = event.data.baz; // 1312
+});
 ```
 
 ## Looping
