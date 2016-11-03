@@ -119,6 +119,7 @@ min$(document).on('foo', function () {
 
 ### Trigger events
 
+```js
 min$(document).trigger('foo');
 ```
 
